@@ -67,9 +67,9 @@ ImageConverter is a versatile tool designed to handle a wide range of image proc
 ##### Loading Images from Different Sources
 
 ```python
-from image_processor import ImageProcessor
+from image_converter import ImageConverter
 
-processor = ImageProcessor()
+processor = ImageConverter()
 
 # From local file
 image_from_file = processor.process_image('path/to/image.jpg')
@@ -166,7 +166,7 @@ html_img = f'<img src="{base64_str}" alt="Base64 Image">'
 
 ```python
 def handle_upload(uploaded_file):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     # Process the uploaded image
     processed = processor.process_image(
@@ -190,7 +190,7 @@ def handle_upload(uploaded_file):
 
 ```python
 def prepare_image_response(image_path, include_base64=False):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     # Process the image
     image = processor.process_image(image_path, max_size=1000)
@@ -220,7 +220,7 @@ def prepare_image_response(image_path, include_base64=False):
 import os
 
 def batch_convert(input_dir, output_dir, target_format='WEBP', max_size=800):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     os.makedirs(output_dir, exist_ok=True)
     
     # Get all image files
@@ -255,7 +255,7 @@ from multiprocessing import Pool
 
 def process_single_image(args):
     image_path, output_dir, max_size, target_format = args
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     try:
         # Get output filename
@@ -305,7 +305,7 @@ def parallel_batch_convert(input_dir, output_dir, workers=4, max_size=800, targe
 
 ```python
 def preprocess_for_model(image_path, target_size=(224, 224), normalize=True):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     # Process to torch tensor
     tensor = processor.process_image(
@@ -343,7 +343,7 @@ from torch.utils.data import Dataset
 
 class ImageDataset(Dataset):
     def __init__(self, image_paths, labels=None, transform=None):
-        self.processor = ImageProcessor()
+        self.processor = ImageConverter()
         self.image_paths = image_paths
         self.labels = labels
         self.transform = transform
@@ -375,7 +375,7 @@ class ImageDataset(Dataset):
 
 ```python
 def create_image_grid(image_paths, output_path, grid_size=(3, 3), cell_size=(300, 300)):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     from PIL import Image
     
     # Calculate grid dimensions
@@ -415,7 +415,7 @@ def create_image_grid(image_paths, output_path, grid_size=(3, 3), cell_size=(300
 
 ```python
 def apply_artistic_filter(image_path, output_path, filter_type='sketch'):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     from PIL import Image, ImageEnhance, ImageFilter, ImageOps
     
     # Load image
@@ -474,10 +474,10 @@ requests>=2.25.0
 ### 5. Quick Start
 
 ```python
-from image_processor import ImageProcessor
+from image_converter import ImageConverter
 
 # Create processor instance
-processor = ImageProcessor()
+processor = ImageConverter()
 
 # Load image from file
 image = processor.process_image('path/to/image.jpg')

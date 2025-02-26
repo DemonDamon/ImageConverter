@@ -69,9 +69,9 @@ ImageConverter是一个多功能工具，设计用于处理各种图像处理任
 ##### 从不同来源加载图像
 
 ```python
-from image_processor import ImageProcessor
+from image_converter import ImageConverter
 
-processor = ImageProcessor()
+processor = ImageConverter()
 
 # 从本地文件加载
 image_from_file = processor.process_image('path/to/image.jpg')
@@ -168,7 +168,7 @@ html_img = f'<img src="{base64_str}" alt="Base64图像">'
 
 ```python
 def handle_upload(uploaded_file):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     # 处理上传的图像
     processed = processor.process_image(
@@ -192,7 +192,7 @@ def handle_upload(uploaded_file):
 
 ```python
 def prepare_image_response(image_path, include_base64=False):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     # 处理图像
     image = processor.process_image(image_path, max_size=1000)
@@ -222,7 +222,7 @@ def prepare_image_response(image_path, include_base64=False):
 import os
 
 def batch_convert(input_dir, output_dir, target_format='WEBP', max_size=800):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     os.makedirs(output_dir, exist_ok=True)
     
     # 获取所有图像文件
@@ -257,7 +257,7 @@ from multiprocessing import Pool
 
 def process_single_image(args):
     image_path, output_dir, max_size, target_format = args
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     try:
         # 获取输出文件名
@@ -307,7 +307,7 @@ def parallel_batch_convert(input_dir, output_dir, workers=4, max_size=800, targe
 
 ```python
 def preprocess_for_model(image_path, target_size=(224, 224), normalize=True):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     # 处理为torch张量
     tensor = processor.process_image(
@@ -345,7 +345,7 @@ from torch.utils.data import Dataset
 
 class ImageDataset(Dataset):
     def __init__(self, image_paths, labels=None, transform=None):
-        self.processor = ImageProcessor()
+        self.processor = ImageConverter()
         self.image_paths = image_paths
         self.labels = labels
         self.transform = transform
@@ -377,7 +377,7 @@ class ImageDataset(Dataset):
 
 ```python
 def create_image_grid(image_paths, output_path, grid_size=(3, 3), cell_size=(300, 300)):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     from PIL import Image
     
     # 计算网格尺寸
@@ -417,7 +417,7 @@ def create_image_grid(image_paths, output_path, grid_size=(3, 3), cell_size=(300
 
 ```python
 def apply_artistic_filter(image_path, output_path, filter_type='sketch'):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     from PIL import Image, ImageEnhance, ImageFilter, ImageOps
     
     # 加载图像
@@ -476,10 +476,10 @@ requests>=2.25.0
 ### 5. 快速开始
 
 ```python
-from image_processor import ImageProcessor
+from image_converter import ImageConverter
 
 # 创建处理器实例
-processor = ImageProcessor()
+processor = ImageConverter()
 
 # 从本地文件加载图像
 image = processor.process_image('path/to/image.jpg')
@@ -539,7 +539,7 @@ ImageConverter的设计目标是提供一个简单但功能强大的图像处理
 ```python
 # 处理用户上传的图像并创建缩略图
 def process_uploaded_image(uploaded_file_path):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     
     # 处理原始图像
     image = processor.process_image(
@@ -565,7 +565,7 @@ def process_uploaded_image(uploaded_file_path):
 ```python
 # 将目录中所有JPG图像转换为WebP格式
 def convert_all_to_webp(input_dir, output_dir):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     os.makedirs(output_dir, exist_ok=True)
     
     for filename in os.listdir(input_dir):
@@ -601,7 +601,7 @@ def convert_all_to_webp(input_dir, output_dir):
 from multiprocessing import Pool
 
 def process_single_image(image_path):
-    processor = ImageProcessor()
+    processor = ImageConverter()
     try:
         image = processor.process_image(image_path, max_size=800)
         output_path = "processed_" + os.path.basename(image_path)
