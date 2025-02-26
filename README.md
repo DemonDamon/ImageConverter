@@ -1,6 +1,6 @@
 # ImageConverter: Universal Image Processing Tool
 [中文文档](README_CN.md) | English
-![](/assets/flowchart.png)
+![](./assets/flowchart.png)
 - Supports multiple input sources: local files, URLs, Base64, storage paths
 - Supports multiple output formats: PIL.Image, numpy arrays, PyTorch tensors
 

@@ -1,5 +1,5 @@
 # ImageConverter: 通用图像处理工具
-![](/assets/flowchart_cn.png)
+![](./assets/flowchart_cn.png)
 
 - 支持多种输入源：本地文件、URL、Base64、存储路径
 - 支持多种输出格式：PIL.Image、numpy数组、PyTorch张量
